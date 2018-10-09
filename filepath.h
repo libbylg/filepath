@@ -23,23 +23,21 @@ EXTERN  char*   basename(char* p);
 #endif
 
 
-struct filepath_t
-{
+struct filepath_t;
 
-};
-
-void    filepath_exit       (struct filepath_t* p);
-int     filepath_init       (struct filepath_t* p, char* path);
-int     filepath_abs        (struct filepath_t* p, char* path);
-int     filepath_clean      (struct filepath_t* p, char* path);
-int     filepath_join       (struct filepath_t* p, char* elem, ...);
+void                filepath_del        (struct filepath_t* p);
+struct filepath_t*  filepath_new        (char* path);
+struct filepath_t*  filepath_abs        (struct filepath_t* p);
+struct filepath_t*  filepath_clean      (struct filepath_t* p);
+struct filepath_t*  filepath_join       (struct filepath_t* p, char* elem, ...);
+int                 filepath_ok         (struct filepath_t* p);
 
 
 char*   filepath_print      (struct filepath_t* p);
 char*   filepath_dirname    (struct filepath_t* p);
 char*   filepath_basename   (struct filepath_t* p);
 char*   filepath_ext        (struct filepath_t* p);
-int     filepath_split      (struct filepath_t* p, int (*callback)(void* context, char* elem). void* context);
+int     filepath_split      (struct filepath_t* p, int (*callback)(void* context, char* elem), void* context);
 
 
 #endif//__filepath_H_

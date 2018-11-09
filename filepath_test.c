@@ -7,10 +7,11 @@
 
 
 #define TEST_SET    \
+    TEST_CASE("/", "/", "/")    \
 TEST_CASE("/usr/lib",    "/usr",    "lib")  \
-/*TEST_CASE("/usr/"   ,    "/"   ,    "usr")*/  \
+TEST_CASE("/usr/"   ,   "/"    ,    "usr")  \
+TEST_CASE("/usr"    ,   "/"    ,    "usr")  \
 TEST_CASE("usr"     ,    "."   ,    "usr")  \
-TEST_CASE("/"       ,    "/"   ,    "/")    \
 TEST_CASE("."       ,    "."   ,    ".")    \
 TEST_CASE(".."      ,    "."   ,    "..")
 

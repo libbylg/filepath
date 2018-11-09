@@ -33,6 +33,15 @@ EXTERN  char*   dirname(char* path)
         return filepath_const_root;
     }
 
+    if ('\0' == p[1])
+    {
+        if (p > path)
+        {
+            *p = '\0';
+            return dirname(path);
+        }
+    }
+
     return path;
 }
 
@@ -55,12 +64,20 @@ EXTERN  char*   basename(char* path)
     {
         p = ((NULL == p1)?p2:p1);
     }
-
-    if (p == path)
+// 
+//     if (p == path)
+//     {
+//         return filepath_const_root;
+//     }
+    if ('\0' == p[1])
     {
-        return filepath_const_root;
+        if (p > path)
+        {
+            *p = '\0';
+            return basename(path);
+        }
+        return p;
     }
-
 
     return p + 1;
 }
@@ -118,7 +135,7 @@ void                filepath_del        (struct filepath_t* p);
 
 struct filepath_t*  filepath_abs        (struct filepath_t* p)
 {
-    
+    return NULL;
 }
 
 struct filepath_t*  filepath_clean      (struct filepath_t* p)
@@ -136,6 +153,8 @@ retry:
 
 
 #undef IS_SPLIT
+
+    return NULL;
 }
 
 struct filepath_t*  filepath_join       (struct filepath_t* p, char* elem, ...);
